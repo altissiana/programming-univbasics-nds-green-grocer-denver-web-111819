@@ -39,7 +39,7 @@ def apply_coupons(cart, coupons)
     coupons.each do |coupon|
       
       # if the cart item is the same as the coupon item
-      if item[:item] == coupon[:item]
+      if item[:item] == coupon[:item] && item[:count] >= coupon[:num]
         
         # attempt to select the discounted item from the cart
         discounted_item = cart.select{|x| x[:item] == "#{item[:item]} W/COUPON"}[0]
