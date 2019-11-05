@@ -35,6 +35,8 @@ def apply_coupons(cart, coupons)
         cart.each do |inner_item|
           if inner_item[:item] == "#{item[:item]} W/COUPON"
             inner_item[:count] += coupon[:num]
+            item[:count] -= coupon[:num]
+          else
             
           end
         discounted_item = item.clone()
