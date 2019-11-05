@@ -50,8 +50,6 @@ def apply_coupons(cart, coupons)
       end
     end
   end
-  puts "*******************************************"
-  pp cart
   cart
 end
 
