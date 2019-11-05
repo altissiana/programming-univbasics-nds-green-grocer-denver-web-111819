@@ -1,20 +1,46 @@
+require 'pp'
+
 def find_item_by_name_in_collection(name, collection)
-  # Implement me first!
-  #
-  # Consult README for inputs and outputs
+  collection.each do |item|
+    if name == item[:item]
+      return item
+    end
+  end
+  nil
 end
 
 def consolidate_cart(cart)
-  # Consult README for inputs and outputs
-  #
-  # REMEMBER: This returns a new Array that represents the cart. Don't merely
-  # change `cart` (i.e. mutate) it. It's easier to return a new thing.
+  new_array = []
+  cart.each do |item|
+    item_found = false
+    new_array.each do |new_item|
+      if item[:item] == new_item[:item]
+        new_item[:count] += 1 
+        item_found = true 
+      end 
+    end
+    if !item_found 
+      new_array.push(item.merge({:count => 1}))
+    end
+  end
+  new_array
 end
 
+
 def apply_coupons(cart, coupons)
-  # Consult README for inputs and outputs
-  #
-  # REMEMBER: This method **should** update cart
+  for i in 0..cart.length
+    item = cart[i]
+    coupons.each do |coupon|
+      if item[:item] == coupon[:item]
+        discounted_item = item.clone()
+        discounted_item[:item] = "#{discounted_item[:item]} W/COUPON"
+        discounted_item[:price] = coupon[:cost] / coupon[:num]
+        cart.push(discounted_item)
+        item[:count] -= coupon[:num]
+      end
+    end
+  end
+  cart
 end
 
 def apply_clearance(cart)
