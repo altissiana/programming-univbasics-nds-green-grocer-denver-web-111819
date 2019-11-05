@@ -41,10 +41,12 @@ def apply_coupons(cart, coupons)
       # if the cart item is the same as the coupon item
       if item[:item] == coupon[:item]
         
-        # boolean to see if we've already added an entry for this coupon
-        discounted_item = cart.select{|h| h[:item] == "#{item[:item]} W/COUPON"}.first
+        # attempt to select the discounted item from the cart
+        discounted_item = cart.select{|x| x[:item] == "#{item[:item]} W/COUPON"}[0]
         
+        # if we found an item with coupon
         if discounted_item != nil
+          # then update that item's count by adding the coupon num
           discounted_item[:count] += coupon[:num]
         else
           # create a copy of the original item
@@ -66,8 +68,7 @@ def apply_coupons(cart, coupons)
       end
     end
   end
-  
-  # return the cart (Holy Jebeebus)
+  # return the cart (Holy Jebus)
   cart
 end
 
