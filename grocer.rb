@@ -42,7 +42,7 @@ def apply_coupons(cart, coupons)
       if item[:item] == coupon[:item]
         
         # boolean to see if we've already added an entry for this coupon
-        discounted_item = cart.select?{|h| h[:item] == "#{item[:item]} W/COUPON"}
+        discounted_item = cart.select{|h| h[:item] == "#{item[:item]} W/COUPON"}.first
         
         if discounted_item != nil
           discounted_item[:count] += coupon[:num]
