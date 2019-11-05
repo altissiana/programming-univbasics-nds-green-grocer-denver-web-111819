@@ -46,7 +46,6 @@ def apply_coupons(cart, coupons)
         
         if discounted_item != nil
           discounted_item[:count] += coupon[:num]
-          item[:count] -= coupon[:num]
         else
           # create a copy of the original item
           discounted_item = item.clone()
@@ -63,6 +62,7 @@ def apply_coupons(cart, coupons)
           # add the coupon item to the cart
           cart.push(discounted_item)
         end
+        item[:count] -= coupon[:num]
       end
     end
   end
