@@ -46,27 +46,8 @@ def apply_coupons(cart, coupons)
         
         if discounted_item != nil
           discounted_item[:count] += coupon[:num]
-        
-        # loop through the cart array again to check for the coupon item
-        cart.each do |inner_item|
-          
-          # if we've found the coupon item
-          if inner_item[:item] == "#{item[:item]} W/COUPON"
-            
-            # update the count of the coupon item to reflect the newly applied coupon
-            inner_item[:count] += coupon[:num]
-            
-            # and notify the loop that we've found the coupon item
-            discounted_item_found = true
-          end
-          
-        # decrease the count of the original item by the number in the coupon
-        item[:count] -= coupon[:num]
-        end
-        
-        # if we did not find a coupon item
-        if !discounted_item_found
-          
+          item[:count] -= coupon[:num]
+        else
           # create a copy of the original item
           discounted_item = item.clone()
           
