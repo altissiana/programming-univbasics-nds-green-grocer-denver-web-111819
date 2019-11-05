@@ -28,7 +28,9 @@ end
 
 
 def apply_coupons(cart, coupons)
-  for i in 0..cart.length
+  #loop through cart with original lenght of cart array 
+  cart_length = cart.length
+  for i in 0..cart_length
     item = cart[i]
     coupons.each do |coupon|
       if item[:item] == coupon[:item]
