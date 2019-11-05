@@ -73,7 +73,7 @@ def apply_coupons(cart, coupons)
 end
 
 def apply_clearance(cart)
-  puts ************************************************
+  puts "************************************************"
   pp cart
 end
 
