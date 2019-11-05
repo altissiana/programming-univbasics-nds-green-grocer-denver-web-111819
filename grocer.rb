@@ -37,13 +37,13 @@ def apply_coupons(cart, coupons)
             inner_item[:count] += coupon[:num]
             item[:count] -= coupon[:num]
           else
-            
-          end
-        discounted_item = item.clone()
+            discounted_item = item.clone()
         discounted_item[:item] = "#{discounted_item[:item]} W/COUPON"
         discounted_item[:price] = coupon[:cost] / coupon[:num]
         cart.push(discounted_item)
         item[:count] -= coupon[:num]
+          end
+        
       end
     end
   end
