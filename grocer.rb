@@ -26,7 +26,6 @@ def consolidate_cart(cart)
   new_array
 end
 
-
 def apply_coupons(cart, coupons)
   #loop ONLY through original array
   cart_length = cart.length
