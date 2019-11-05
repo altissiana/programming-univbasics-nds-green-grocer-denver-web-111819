@@ -28,7 +28,7 @@ end
 
 
 def apply_coupons(cart, coupons)
-  #loop through cart with original lenght of cart array 
+  #loop ONLY through original array
   cart_length = cart.length
   for i in 0..cart_length
   
