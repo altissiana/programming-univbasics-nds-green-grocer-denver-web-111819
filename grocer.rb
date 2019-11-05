@@ -73,8 +73,10 @@ def apply_coupons(cart, coupons)
 end
 
 def apply_clearance(cart)
-  puts "************************************************"
-  pp cart
+  cart.each do |item|
+    if item[:clearance] == true
+     
+  end  
 end
 
 def checkout(cart, coupons)
