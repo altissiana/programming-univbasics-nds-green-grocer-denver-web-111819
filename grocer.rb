@@ -42,9 +42,9 @@ def apply_coupons(cart, coupons)
       if item[:item] == coupon[:item]
         
         # boolean to see if we've already added an entry for this coupon
-        discounted_item_found = false
+        discounted_item_found = cart.any?{|h|}
         
-        # loop through the cart array to check for the coupon item
+        # loop through the cart array again to check for the coupon item
         cart.each do |inner_item|
           
           # if we've found the coupon item
