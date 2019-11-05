@@ -32,16 +32,19 @@ def apply_coupons(cart, coupons)
     item = cart[i]
     coupons.each do |coupon|
       if item[:item] == coupon[:item]
+        discounted_item_found = false
         cart.each do |inner_item|
           if inner_item[:item] == "#{item[:item]} W/COUPON"
             inner_item[:count] += coupon[:num]
-          else
-            discounted_item = item.clone()
-            discounted_item[:item] = "#{discounted_item[:item]} W/COUPON"
-            discounted_item[:price] = coupon[:cost] / coupon[:num]
-            cart.push(discounted_item)
+            discounted_item_found = true
           end
         item[:count] -= coupon[:num]
+        end
+        if !discounted_item_found
+          discounted_item = item.clone()
+          discounted_item[:item] = "#{discounted_item[:item]} W/COUPON"
+          discounted_item[:price] = coupon[:cost] / coupon[:num]
+          cart.push(discounted_item)
         end
       end
     end
